@@ -54,6 +54,12 @@ const RootQuery = new GraphQLObjectType({
                 //code to get data from db
             },
         },
+        authors: {
+            type: new GraphQLList(AuthorType),
+            resolve(parent, args) {
+                //code to get data from db
+            },
+        },
     },
 });
 
