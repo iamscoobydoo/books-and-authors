@@ -1,6 +1,7 @@
 const graphql = require("graphql");
 
-const { GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt } = graphql;
+const { GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLList } =
+    graphql;
 
 const BookType = new GraphQLObjectType({
     name: "Book",
@@ -23,6 +24,10 @@ const AuthorType = new GraphQLObjectType({
         id: { type: GraphQLID },
         name: { type: GraphQLString },
         age: { type: GraphQLInt },
+        books: {
+            type: new GraphQLList(BookType),
+            resolve(parent, args) {},
+        },
     }),
 });
 
@@ -39,6 +44,12 @@ const RootQuery = new GraphQLObjectType({
         author: {
             type: AuthorType,
             args: { id: { type: GraphQLID } },
+            resolve(parent, args) {
+                //code to get data from db
+            },
+        },
+        books: {
+            type: new GraphQLList(BookType),
             resolve(parent, args) {
                 //code to get data from db
             },
