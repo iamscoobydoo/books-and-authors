@@ -21,12 +21,12 @@ function AddBook() {
             <form id='add-book'>
                 <div className='field'>
                     <label>Book Name:</label>
-                    <input type={text} />
+                    <input type='text' />
                 </div>
 
                 <div className='field'>
                     <label>Genre:</label>
-                    <input type={text} />
+                    <input type='text' />
                 </div>
 
                 <div className='field'>
