@@ -30,7 +30,7 @@ const AuthorType = new GraphQLObjectType({
         books: {
             type: new GraphQLList(BookType),
             resolve(parent, args) {
-                return Book.find({ authorId: parent.id }).populate("authorId");
+                return Book.find({ authorId: parent.id });
             },
         },
     }),
@@ -43,7 +43,7 @@ const RootQuery = new GraphQLObjectType({
             type: BookType,
             args: { id: { type: GraphQLID } },
             resolve(parent, args) {
-                return Book.findById(args.id).populate("authorId");
+                return Book.findById(args.id);
             },
         },
         author: {
