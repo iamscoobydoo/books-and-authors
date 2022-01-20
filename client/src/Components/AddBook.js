@@ -34,7 +34,11 @@ function AddBook() {
                     <select>
                         <option> Select Author</option>
                         {data.authors.map((author) => {
-                            return <option key={author.id}>{author.name}</option>;
+                            return (
+                                <option key={author.id} value={author.id}>
+                                    {author.name}
+                                </option>
+                            );
                         })}
                     </select>
                 </div>
