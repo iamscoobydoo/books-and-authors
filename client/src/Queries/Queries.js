@@ -20,20 +20,18 @@ const getAuthorsQuery = gql`
 `;
 
 const getBookQuery = gql`
-    {
-        query($id: ID!){
-            book(id: $id){
+    query ($id: ID!) {
+        book(id: $id) {
+            id
+            name
+            genre
+            author {
                 id
                 name
-                genre
-                author{
-                    id
+                age
+                books {
                     name
-                    age
-                    books{
-                        name
-                        id
-                    }
+                    id
                 }
             }
         }
