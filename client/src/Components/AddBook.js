@@ -36,21 +36,16 @@ function AddBook() {
     const GetAuthors = () => {
         const { loading, error, data } = useQuery(getAuthorsQuery);
 
-        if (loading) return <p>Loading Author...</p>;
-        if (error) return <p>Error </p>;
+        if (loading) return <option>Loading Author...</option>;
+        if (error) return <option>Error </option>;
 
-        return (
-            <select name='authorId' onChange={changeHandler}>
-                <option> Select Author</option>
-                {data.authors.map((author) => {
-                    return (
-                        <option key={author.id} value={author.id}>
-                            {author.name}
-                        </option>
-                    );
-                })}
-            </select>
-        );
+        return data.authors.map((author) => {
+            return (
+                <option key={author.id} value={author.id}>
+                    {author.name}
+                </option>
+            );
+        });
     };
 
     return (
@@ -68,7 +63,10 @@ function AddBook() {
 
                 <div className='field'>
                     <label>Author:</label>
-                    <GetAuthors />
+                    <select name='authorId' onChange={changeHandler}>
+                        <option> Select Author</option>
+                        {GetAuthors()}
+                    </select>
                 </div>
 
                 <button>+</button>
