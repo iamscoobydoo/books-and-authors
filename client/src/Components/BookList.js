@@ -3,6 +3,8 @@ import { useQuery } from "@apollo/client";
 
 import { getBooksQuery } from "../Queries/Queries";
 
+import BookDetails from "./BookDetails";
+
 function BookList() {
     const { loading, error, data } = useQuery(getBooksQuery);
 
@@ -16,6 +18,7 @@ function BookList() {
                     return <li key={book.id}>{book.name}</li>;
                 })}
             </ul>
+            <BookDetails />
         </>
     );
 }
