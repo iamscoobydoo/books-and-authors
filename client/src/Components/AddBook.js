@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 
-import { getAuthorsQuery, addBookMutation } from "../Queries/Queries";
+import { getAuthorsQuery, addBookMutation, getBooksQuery } from "../Queries/Queries";
 
 function AddBook() {
     const [bookDetails, setBookDetails] = useState({
@@ -24,6 +24,7 @@ function AddBook() {
                 genre: bookDetails.genre,
                 authorId: bookDetails.authorId,
             },
+            refetchQueries: [{ query: getBooksQuery }],
         });
 
         bookDetails.name = "";
@@ -51,9 +52,6 @@ function AddBook() {
             </select>
         );
     };
-
-    if (loading) return "Submitting...";
-    if (error) return `Submission error! ${error.message}`;
 
     return (
         <>
